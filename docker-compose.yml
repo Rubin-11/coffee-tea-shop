@@ -1,0 +1,70 @@
+version: '3.8'
+
+services:
+  php:
+    build: ./docker/php
+    # Добавлены переменные окружения для PostgreSQL
+    environment:
+      - DB_HOST=postgres
+      - DB_DATABASE=${DB_DATABASE}
+      - DB_USERNAME=${DB_USERNAME}
+      - DB_PASSWORD=${DB_PASSWORD}
+    # Добавлена политика рестарта для сервиса PHP
+    restart: unless-stopped
+    volumes:
+      - ./src:/var/www/html
+    networks:
+      - app-network
+
+  websocket:
+    build: ./docker/websocket
+    ports:
+      - "8081:8080"
+    networks:
+      - app-network
+    depends_on:
+      - php
+      - postgres
+    # Добавлена политика рестарта для сервиса WebSocket
+    restart: unless-stopped
+
+  nginx:
+    image: nginx:alpine
+    ports:
+      - "80:80"
+    volumes:
+      - ./src/public:/var/www/html/public
+      - ./docker/nginx/default.conf:/etc/nginx/conf.d/default.conf
+    networks:
+      - app-network
+    depends_on:
+      - php
+    # Добавлена политика рестарта для сервиса Nginx
+    restart: unless-stopped
+
+  postgres:
+    image: postgres:17-alpine
+    environment:
+      POSTGRES_DB: ${DB_DATABASE}
+      POSTGRES_USER: ${DB_USERNAME}
+      POSTGRES_PASSWORD: ${DB_PASSWORD}
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    networks:
+      - app-network
+    ports:
+      - "5432:5432"
+    # Добавлена проверка работоспособности для сервиса PostgreSQL
+    healthcheck:
+     test: [ "CMD-SHELL", "pg_isready -U ${DB_USERNAME} -d ${DB_DATABASE}" ]
+     interval: 5s
+     timeout: 5s
+     retries: 5
+    # Добавлена политика рестарта для сервиса PostgreSQL
+    restart: unless-stopped
+
+volumes:
+  postgres_data:
+
+networks:
+  app-network:

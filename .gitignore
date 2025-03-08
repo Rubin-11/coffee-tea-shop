@@ -1,1 +1,30 @@
-.idea
+# Файл окружения
+.env
+
+# Зависимости Composer
+/vendor/
+
+# Логи
+/logs/
+*.log
+
+# Docker-образы
+*.dockerignore
+*.env
+
+# Настройки IDE
+.idea/
+.vscode/
+.gigaide
+
+# Загруженные файлы
+/public/uploads/
+
+# Бинарные файлы
+*.swp
+*.swo
+.DS_Store
+
+# Миграции БД (если не храним в репозитории)
+/database/migrations/
+/database/seeds/
