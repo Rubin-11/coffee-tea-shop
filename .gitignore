@@ -3,6 +3,7 @@
 
 # Зависимости Composer
 /vendor/
+/src/vendor
 
 # Логи
 /logs/
