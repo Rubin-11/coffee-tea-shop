@@ -1,0 +1,15 @@
+{
+    "name": "shop/rubin11",
+    "autoload": {
+        "psr-4": {
+            "Shop\\Rubin11\\": "app/"
+        }
+    },
+    "authors": [
+        {
+            "name": "Sergey Misharin",
+            "email": "misharin_sergey-work@mail.ru"
+        }
+    ],
+    "require": {}
+}
