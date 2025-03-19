@@ -25,7 +25,3 @@ src/vendor/
 *.swp
 *.swo
 .DS_Store
-
-# Миграции БД (если не храним в репозитории)
-/database/migrations/
-/database/seeds/
