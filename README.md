@@ -33,18 +33,18 @@ cp .env.example .env
 
 3. Запустите контейнеры:
 ```bash
-docker-compose up -d --build
+docker compose up -d --build
 ```
 
 4. Установите зависимости:
 ```bash
-docker-compose exec coffee-tea-shop-php-1 composer install
+docker compose exec php composer install
 ```
 
 5. Примените миграции и сиды:
 ```bash
-docker-compose exec coffee-tea-shop-php-1 composer migrate
-docker-compose exec coffee-tea-shop-php-1 composer seed
+docker compose exec php composer migrate
+docker compose exec php composer seed
 ```
 
 ### Доступы
@@ -62,17 +62,17 @@ docker-compose exec coffee-tea-shop-php-1 composer seed
 
 - Применить миграции:
 ```bash
-docker-compose exec coffee-tea-shop-php-1 composer migrate
+docker compose exec php composer migrate
 ```
 
 - Откатить последнюю миграцию:
 ```bash
-docker-compose exec coffee-tea-shop-php-1 composer migrate:rollback
+docker compose exec php composer migrate:rollback
 ```
 
 - Запустить сидинг данных:
 ```bash
-docker-compose exec coffee-tea-shop-php-1 composer seed
+docker compose exec php composer seed
 
 **Сергей Мишарин**  
 📧 Email: misharin_sergey-work@mail.ru

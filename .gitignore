@@ -17,6 +17,7 @@ src/vendor/
 .idea/
 .vscode/
 .gigaide
+.windsurfrules
 
 # Загруженные файлы
 /public/uploads/
