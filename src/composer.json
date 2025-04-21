@@ -17,8 +17,8 @@
     "scripts": {
         "migrate": "./vendor/bin/phinx migrate -e development",
         "migrate:create": "./vendor/bin/phinx create",
-        "migrate:rollback": "./vendor/bin/phinx rollback -e development",
-        "seed": "./vendor/bin/phinx seed:run -s ProductSeeder -e development",
+        "migrate:rollback": "./vendor/bin/phinx -s",
+        "seed:run": "./vendor/bin/phinx seed:run -s",
         "seed:all": "./vendor/bin/phinx seed:run -e development",
         "seed:create": "./vendor/bin/phinx seed:create"
     },

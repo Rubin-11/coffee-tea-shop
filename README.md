@@ -70,9 +70,10 @@ docker compose exec php composer migrate
 docker compose exec php composer migrate:rollback
 ```
 
-- Запустить сидинг данных:
+- Заполнить базу тестовыми данными:
 ```bash
-docker compose exec php composer seed
+chmod +x scripts/seed_all.sh && ./scripts/seed_all.sh
+```
 
 **Сергей Мишарин**  
 📧 Email: misharin_sergey-work@mail.ru
