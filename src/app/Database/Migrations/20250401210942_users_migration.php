@@ -10,7 +10,7 @@ final class UsersMigration extends AbstractMigration
     {
         $this->execute('CREATE EXTENSION IF NOT EXISTS citext');
 
-        $table = $this->table('users');
+        $table = $this->table('users'); // 
         $table
             ->addColumn('first_name', 'text', [
                 'null' => true
