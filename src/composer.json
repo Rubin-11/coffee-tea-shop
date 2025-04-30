@@ -23,6 +23,6 @@
         "seed:create": "./vendor/bin/phinx seed:create"
     },
     "config": {
-        "bin-dir": "bin"
+        "bin-dir": "vendor/bin"
     }
 }

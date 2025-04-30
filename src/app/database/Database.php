@@ -1,6 +1,6 @@
 <?php
 
-namespace Shop\Rubin11\Database;
+namespace Shop\Rubin11\database;
 
 use PDO;
 use PDOException;

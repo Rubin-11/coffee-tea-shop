@@ -1,18 +1,13 @@
 <?php
+session_start();
 
 require_once __DIR__ . '/../vendor/autoload.php';
 
+use Shop\Rubin11\Router;
 use Shop\Rubin11\Controllers\ProductController;
 
-$request = parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH);
+$router = new Router();
 
-switch ($request) {
-  case '/':
-  case '/products':
-    (new ProductController())->index();
-    break;
-  default:
-    http_response_code(404);
-    echo '404 Not Found';
-    break;
-}
+require_once __DIR__ . '/../app/routes/web.php';
+
+$router->dispatch($_SERVER['REQUEST_URI']); 
