@@ -1,6 +1,6 @@
 <?php
 
-namespace Shop\Rubin11\Models;
+namespace Shop\Rubin11\models;
 
 use PDO;
 
