@@ -38,6 +38,30 @@ final class User
         return null;
     }
 
+    /**
+     * Поиск пользователя по ID
+     * 
+     * @param int $id ID пользователя
+     * @return User|null Объект пользователя или null, если не найден
+     */
+    public static function findById(int $id): ?self
+    {
+        $pdo = Database::getPdo();
+        $statement = $pdo->prepare('SELECT * FROM users WHERE id = :id LIMIT 1');
+        $statement->execute(['id' => $id]);
+        $data = $statement->fetch(PDO::FETCH_ASSOC);
+        
+        if ($data) {
+            $user = new self();
+            foreach ($data as $key => $value) {
+                $user->$key = $value;
+            }
+            return $user;
+        }
+        
+        return null;
+    }
+
     public function save(): bool // Сохранение пользователя
     {
         $pdo = Database::getPdo();
