@@ -17,5 +17,5 @@ class AuthMiddleware
             exit;
         }
         return $next($params);
-    }
+    }   
 }
